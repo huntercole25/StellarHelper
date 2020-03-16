@@ -38,6 +38,3 @@ SpecPlotter <- function(FolderOfInterest, Filename, FileExtension = "ssm", Title
 
   plot(SpecPlot)
 }
-
-SpecPlotter(FolderOfInterest = "~/Downloads/", Filename = "CFL_test")
-
