@@ -1,0 +1,15 @@
+Package: StellarHelper
+Title: A Companion to StellarNet Spectroradiometers
+Version: 0.0.0.1
+Authors@R: 
+    person(given = "Hunter",
+           family = "Cole",
+           role = c("aut", "cre"),
+           email = "huntercole@u.boisestate.edu")
+Description: What the package does (one paragraph).
+Imports: pavo (>= 2.4.0),
+          ggplot2
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.0
