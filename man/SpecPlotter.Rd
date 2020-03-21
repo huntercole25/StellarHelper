@@ -2,35 +2,48 @@
 % Please edit documentation in R/SpecPlot.R
 \name{SpecPlotter}
 \alias{SpecPlotter}
-\title{Field Plotting Function}
+\title{Field Data Visualization Function}
 \usage{
 SpecPlotter(
-  FolderOfInterest,
-  Filename,
-  FileExtension = "ssm",
-  Title = Filename,
-  Ylab = "Count"
+  FilePath,
+  Lims = c(250, 1100),
+  ObjectSave = T,
+  ObjectName = paste0(Filename, "_spec"),
+  BreakInt = 50,
+  Vgrid = F,
+  Title = basename(FilePath),
+  Ylab = "Count",
+  SavePlot = F
 )
 }
 \arguments{
-\item{FolderOfInterest}{A character string providing the path to the directory housing the file of interest.}
+\item{FilePath}{A character string providing the full file path to the spectral file of interest including file extension.}
 
-\item{Filename}{A character string providing the file name for the file of interest WITHOUT EXTENSION.}
+\item{Lims}{A numeric vector indicating the wavelength limits to be read in via `pavo::getspec()`. This vector cannot go outside of the wavelengths in the file of interest. Defaults to c(250, 1100).}
 
-\item{FileExtension}{A character string providing the file extension of the file of interest WITHOUT THE LEADING DOT. This defaults to "ssm" which corresponds with scope mode.}
+\item{ObjectSave}{A Boolean value indicating whether the spectral data should be saved as an object in the global environment. Defaults to T.}
+
+\item{ObjectName}{A character string indicating the name of the rspec object that is saved to the global environment if `ObjectSave = T`.}
+
+\item{BreakInt}{An integer inidcating the x-axis label interval in nanometers. Defaults to 50.}
+
+\item{Vgrid}{A Boolean value indicating whether the major grid lines should be visible. Defaults to F.}
 
 \item{Title}{A character string providing the desired plot title. Defaults to the file name.}
 
 \item{Ylab}{A character string providing the desired y-axis label. Defaults to "Count" which is appropriate for data collected in scope mode.}
+
+\item{SavePlot}{A Boolean value indicating whether the plot this function generates should be saved as a .png file in the same directory and with the same name as the spectral file. Defaults to F.}
 }
 \description{
-This function creates a dark-themed plot for quickly checking exported spectral data while maintaining the integrity of your scoptopic vision.
+This function creates a dark-themed plot for quickly visualizing spectral data while maintaining the integrity of your scoptopic vision.
 }
 \examples{
-#Plotting a .ssm file
-SpecPlotter("~/Documents", "Test_File")
+##Not run:
+#Plotting a .SSM file
+SpecPlotter("~/Documents/example_file.ssm")
 
-#Plotting a .irr file
-SpecPlotter("~/Documents", "Test_File2", "irr")
+#Plotting a .IRR file from 500nm-700nm
+SpecPlotter("~/Documents/example_file.IRR", Lims = c(500,700))
 }
 \keyword{plotting}
